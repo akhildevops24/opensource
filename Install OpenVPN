@@ -1,0 +1,15 @@
+#This script is used to install the OpenVPN server on Ubuntu 18.04
+#Change the URL if you need specific version of OpenVPN Server 
+openvpnurl=https://openvpn.net/downloads/openvpn-as-latest-ubuntu18.amd_64.deb
+sudo apt update
+sudp apt -y install wget dpkg
+echo "Downloading the OpenVPN Package"
+sudo wget -O $openvpnurl -O openvpn-latest.amd_64.deb
+echo "Unpacking the Package"
+sudo dpkg openvpn-latest.amd_64.deb
+echo "OpenVPN Access Server has been successfully installed on this server"
+echo"To confirm installation Please go to https://<PublicIP>:943/admin"
+echo "Please change the password for openvpn user for security reaons"
+sudo passwd openvpn
+echo "Login with the openvpn user credentials in the https://<PublicIP>:943/admin"
+echo "Change the DNS entry in your DNS Manager"
