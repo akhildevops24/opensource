@@ -9,7 +9,7 @@ echo "Unpacking the Package"
 sudo dpkg openvpn-latest.amd_64.deb
 echo "OpenVPN Access Server has been successfully installed on this server"
 echo"To confirm installation Please go to https://<PublicIP>:943/admin"
-echo "Please change the password for openvpn user for security reaons"
+echo "Please change the password for openvpn user for security reasons"
 sudo passwd openvpn
 echo "Login with the openvpn user credentials in the https://<PublicIP>:943/admin"
 echo "Change the DNS entry in your DNS Manager"
