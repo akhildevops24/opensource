@@ -30,4 +30,8 @@ sudo sleep 3s
 echo "Restarting Tomcat"
 sudo service tomcat8 restart
 
+echo "Updating rights to move the geowebcache extensions to move in geowebcache/WEB-INF/lib"
+sudo chown -R tomcat8:geowebcache /var/lib/tomcat8/webapps/geowebcache
+sudo chmod -R 775 /var/lib/tomcat8/webapps/geowebcache
+
 echo "The Geowebcache is successfully installed. The default credentials are user: geowebcache passwdL secured"
