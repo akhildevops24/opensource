@@ -1,0 +1,33 @@
+#!/bin/bash
+## In this script I used Geowebcache version 1.15.0, you can use the one you need. Just replace the one you need.
+#this is  the shell script to install geowebcache on a server with tomcat8 and Java 8 intstalled
+
+echo "Deleting any old geowebcaches installed"
+
+sudo rm -R /var/lib/tomcat8/webapps/geowebcache
+sudo rm -R /var/lib/tomcat8/webapps/geowebcache.war
+sudo rm -R /geowebcache*
+
+##change the URLs with the latest version
+geowebcacheurl=https://sourceforge.net/projects/geowebcache/files/geowebcache/1.15.0/geowebcache-1.15.0-war.zip
+
+echo "Downloading latest geowebcache and its extensions"
+sudo wget $geowebcacheurl -O geowebcache-war.zip
+
+echo "Started installing latest geowebcache"
+
+echo "Unzipping the geowebcache file"
+
+sudo unzip -o geowebcache-war.zip
+
+echo "moving the geowebcache.war file to webapps folder"
+
+sudo mv /geowebcache.war /var/lib/tomcat8/webapps/
+
+echo "sleeping for 3 Seconds"
+sudo sleep 3s
+
+echo "Restarting Tomcat"
+sudo service tomcat8 restart
+
+echo "The Geowebcache is successfully installed. The default credentials are user: geowebcache passwdL secured"
