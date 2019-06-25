@@ -7,7 +7,7 @@ sudo apt-get -y install systemd
 
 
 javaLatest="http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz"
-tomcat8='http://httpd-mirror.sergal.org/apache/tomcat/tomcat-8/v8.5.20/bin/apache-tomcat-8.5.20.tar.gz'
+tomcat8='http://httpd-mirror.sergal.org/apache/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.tar.gz'
 
 
 
@@ -16,7 +16,7 @@ workspace='/home/geodevadmin'
 gwcfolder='/home/geodevadmin/gwc'
 downloadfolder='/home/geodevadmin/download'
 #tomcatfolder='/opt/apache-tomcat-6.0.53'
-tomcatpath='/opt/apache-tomcat-8.5.20'
+tomcatpath='/opt/apache-tomcat-8.5.42'
 javapath='/opt/jdk1.8.0_144'
 geowebcache="$tomcatpath/webapps" #/geowebcache"
 
@@ -38,7 +38,7 @@ sudo wget -P $downloadfolder $tomcat8
 sudo wget -P $downloadfolder --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" $javaLatest
 sudo wget -P $downloadfolder "https://sourceforge.net/projects/geowebcache/files/geowebcache/1.11.0/geowebcache-1.11.0-war.zip"
 
-sudo mv apache-tomcat-8.5.20.tar.gz $tmpOptFolder
+sudo mv apache-tomcat-8.5.42.tar.gz $tmpOptFolder
 sudo mv jdk-8u144-linux-x64.tar.gz $tmpOptFolder
 
 for i in $(ls $tmpOptFolder); do
@@ -67,11 +67,11 @@ sudo sed -i '94iJAVA_OPTS="-server -Xmx1024M -DGEOWEBCACHE_CACHE_DIR=/home/geode
 #configure Tomtcat users:
 #/opt/apache-tomcat-6.0.53/conf$
 cd $tomcatfolder/conf
-sudo sed -i '41i<role rolename="manager"/>' tomcat-users.xml
-sudo sed -i '42i<user username="tomcat" password="somerandom" roles="manager"/>' tomcat-users.xml
+sudo sed -i '44i<role rolename="manager"/>' tomcat-users.xml
+sudo sed -i '45i<user username="tomcat" password="somerandom" roles="manager"/>' tomcat-users.xml
 
 #starting tomcat
-sudo sh /opt/apache-tomcat-6.0.53/bin/startup.sh
+sudo sh /opt/apache-tomcat-8.5.42/bin/startup.sh
 
 #Manual setup
 #Create a bash script
