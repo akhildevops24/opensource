@@ -48,7 +48,9 @@ sudo sed -i '45i<user username="tomcat" password="XXXXXXX" roles="manager-gui"/>
 sudo chown -R root:geowebcache /opt/apache-tomcat-8.5.42/
 sudo chmod -R 775 /opt/apache-tomcat-8.5.42/
 
+
 #Copy Setenv.sh to tomcat folder
+## This one is used to add the class paths at the time of tomcat startup. to add Java Path and the Geowebcache Data directory location to set to different location
 #sudo mv /home/geodevadmin/downloads/setenv.sh /opt/apache-tomcat-8.5.42/bin/
 cd /opt/apache-tomcat-8.5.42/bin/
 sudo touch setenv.sh
@@ -77,7 +79,7 @@ echo "Changing Permissions on /opt Folder"
 sudo chown -R root:geowebcache /opt/apache-tomcat-8.5.42/
 sudo chmod -R 775 /opt/apache-tomcat-8.5.42/
 
-##Add CORS 
+##Add CORS filter to allow any browser or any of the  domain to contact  the server with cross Origin CORS 
 cd /opt/apache-tomcat-8.5.42/conf/
 sudo sed -i '447i<!-- CORS Filter   -->' web.xml
 sudo sed -i '448i<filter>' web.xml
